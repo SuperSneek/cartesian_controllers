@@ -277,6 +277,13 @@ CartesianControllerBase::on_activate(const rclcpp_lifecycle::State & previous_st
     return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
   }
 
+  m_joint_cmd_pos_handles.clear();
+  m_joint_cmd_vel_handles.clear();
+  m_joint_state_pos_handles.clear();
+  m_joint_cmd_pos_handles.reserve(m_joint_names.size());
+  m_joint_cmd_vel_handles.reserve(m_joint_names.size());
+  m_joint_state_pos_handles.reserve(m_joint_names.size());
+
   // Get command handles.
   for (const auto & type : m_cmd_interface_types)
   {
