@@ -198,7 +198,7 @@ MotionControlHandle::on_configure(const rclcpp_lifecycle::State & previous_state
 
   // Publishers
   m_pose_publisher = get_node()->create_publisher<geometry_msgs::msg::PoseStamped>(
-    get_node()->get_name() + std::string("/target_frame"), 10);
+    "~/target_frame", 10);
 
   // Initialize kinematics
   m_fk_solver.reset(new KDL::ChainFkSolverPos_recursive(m_robot_chain));
